@@ -3,10 +3,10 @@ import { CheckCircle2, AlertTriangle, XCircle, ExternalLink } from "lucide-react
 import type { HeaderCheck } from "@/lib/headerAnalyzer";
 
 const statusConfig = {
-  good: { icon: CheckCircle2, color: "text-success", border: "border-l-success", label: "✅ Présent et correct" },
-  partial: { icon: AlertTriangle, color: "text-warning", border: "border-l-warning", label: "⚠️ Partiel" },
-  missing: { icon: XCircle, color: "text-destructive", border: "border-l-destructive", label: "❌ Absent" },
-  bad: { icon: XCircle, color: "text-destructive", border: "border-l-destructive", label: "❌ Mauvaise config" },
+  good: { icon: CheckCircle2, color: "text-success", border: "border-l-success", label: "✅ Present and correct" },
+  partial: { icon: AlertTriangle, color: "text-warning", border: "border-l-warning", label: "⚠️ Partial" },
+  missing: { icon: XCircle, color: "text-destructive", border: "border-l-destructive", label: "❌ Missing" },
+  bad: { icon: XCircle, color: "text-destructive", border: "border-l-destructive", label: "❌ Bad config" },
 };
 
 interface Props {
@@ -50,12 +50,12 @@ const HeaderResultCard = ({ header, index }: Props) => {
           )}
 
           {header.status !== "good" && (
-            <p className="text-xs text-destructive/80 mt-1">⚡ Impact : {header.impact}</p>
+            <p className="text-xs text-destructive/80 mt-1">⚡ Impact: {header.impact}</p>
           )}
 
           <a href={header.link} target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-1 text-xs text-primary hover:underline mt-2">
-            En savoir plus <ExternalLink className="h-3 w-3" />
+            Learn more <ExternalLink className="h-3 w-3" />
           </a>
         </div>
       </div>

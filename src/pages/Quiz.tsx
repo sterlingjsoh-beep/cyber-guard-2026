@@ -54,13 +54,9 @@ const Quiz = () => {
       setAnswered(false);
       setTimeLeft(TIMER_DURATION);
     } else {
-      const score = results.length > 0
-        ? results.filter((r) => r.correct).length + (answered && isCorrect ? 0 : 0)
-        : 0;
-      // results already includes current answer
       navigate("/results", { state: { results, questions } });
     }
-  }, [currentIndex, results, navigate, answered, isCorrect]);
+  }, [currentIndex, results, navigate]);
 
   // Timer
   useEffect(() => {
@@ -127,7 +123,6 @@ const Quiz = () => {
             {/* Scenario */}
             <div className="glass rounded-xl p-6 mb-6">
               <p className="text-sm leading-relaxed mb-4">{question.scenario}</p>
-              {/* Mockup */}
               <pre className="text-xs font-mono bg-background/50 rounded-lg p-4 overflow-x-auto whitespace-pre-wrap border border-border/50 text-muted-foreground">
                 {question.mockup}
               </pre>
@@ -190,7 +185,7 @@ const Quiz = () => {
                     )}
                     <div>
                       <p className="font-semibold mb-2">
-                        {isCorrect ? "✅ Bonne réponse !" : selectedIndex === null ? "⏰ Temps écoulé !" : "❌ Mauvaise réponse"}
+                        {isCorrect ? "✅ Correct!" : selectedIndex === null ? "⏰ Time's up!" : "❌ Wrong answer"}
                       </p>
                       <p className="text-sm text-muted-foreground mb-3">
                         {isCorrect ? question.explanationCorrect : question.explanationWrong}
@@ -209,7 +204,7 @@ const Quiz = () => {
             {answered && (
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center">
                 <Button onClick={handleNext} size="lg" className="gap-2 rounded-xl">
-                  {currentIndex < questions.length - 1 ? "Question suivante" : "Voir mes résultats"}
+                  {currentIndex < questions.length - 1 ? "Next Question" : "See My Results"}
                   <ChevronRight className="h-4 w-4" />
                 </Button>
               </motion.div>
