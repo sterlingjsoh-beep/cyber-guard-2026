@@ -36,7 +36,7 @@ const Analyze = () => {
   if (!url) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-muted-foreground">Aucune URL spécifiée.</p>
+        <p className="text-muted-foreground">No URL specified.</p>
       </div>
     );
   }
@@ -46,7 +46,7 @@ const Analyze = () => {
       <div className="container mx-auto max-w-3xl">
         {/* Back */}
         <Link to="/home" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-6">
-          <ArrowLeft className="h-4 w-4" /> Retour
+          <ArrowLeft className="h-4 w-4" /> Back
         </Link>
 
         {/* URL */}
@@ -55,7 +55,7 @@ const Analyze = () => {
           animate={{ opacity: 1, y: 0 }}
           className="glass rounded-xl p-4 mb-8"
         >
-          <p className="text-xs text-muted-foreground mb-1">URL analysée</p>
+          <p className="text-xs text-muted-foreground mb-1">Analyzed URL</p>
           <p className="font-mono text-sm break-all">{url}</p>
         </motion.div>
 
@@ -75,10 +75,10 @@ const Analyze = () => {
               <SecurityGauge score={result.score} grade={result.grade} />
               <p className="text-muted-foreground mt-4 text-sm max-w-md mx-auto">
                 {result.score >= 80
-                  ? "🏆 Excellente configuration ! Ce site suit les bonnes pratiques de sécurité HTTP."
+                  ? "🏆 Excellent configuration! This site follows HTTP security best practices."
                   : result.score >= 60
-                    ? "⚠️ Configuration correcte mais améliorable. Suivez les recommandations ci-dessous."
-                    : "🚨 Configuration faible. Plusieurs headers critiques sont absents ou mal configurés."}
+                    ? "⚠️ Decent configuration but could be improved. Follow the recommendations below."
+                    : "🚨 Weak configuration. Several critical headers are missing or misconfigured."}
               </p>
             </motion.div>
 
@@ -94,11 +94,11 @@ const Analyze = () => {
             <div className="flex flex-wrap gap-3 mb-8">
               <Button variant="outline" size="sm" onClick={handleCopyReport} className="gap-2 rounded-lg">
                 {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-                {copied ? "Copié !" : "Copier le rapport (Markdown)"}
+                {copied ? "Copied!" : "Copy Report (Markdown)"}
               </Button>
               <Link to={`/analyze?url=${encodeURIComponent(url)}&t=${Date.now()}`}>
                 <Button variant="outline" size="sm" className="gap-2 rounded-lg">
-                  <RotateCcw className="h-4 w-4" /> Re-analyser
+                  <RotateCcw className="h-4 w-4" /> Re-analyze
                 </Button>
               </Link>
             </div>
@@ -115,13 +115,13 @@ const Analyze = () => {
                   className="glass rounded-xl p-5 mb-8 border border-destructive/20"
                 >
                   <h2 className="font-bold text-sm mb-3 flex items-center gap-2">
-                    <FileText className="h-4 w-4 text-destructive" /> Actions prioritaires
+                    <FileText className="h-4 w-4 text-destructive" /> Priority Actions
                   </h2>
                   <ul className="space-y-2">
                     {critical.slice(0, 4).map(h => (
                       <li key={h.key} className="text-sm text-muted-foreground flex items-start gap-2">
                         <span className="text-destructive">→</span>
-                        <span><span className="font-mono font-medium text-foreground">{h.name}</span> : {h.recommendation}</span>
+                        <span><span className="font-mono font-medium text-foreground">{h.name}</span>: {h.recommendation}</span>
                       </li>
                     ))}
                   </ul>
@@ -130,7 +130,7 @@ const Analyze = () => {
             })()}
 
             {/* Header details */}
-            <h2 className="text-lg font-bold mb-4">📋 Détail des headers ({result.headers.length})</h2>
+            <h2 className="text-lg font-bold mb-4">📋 Header Details ({result.headers.length})</h2>
             <div className="space-y-3">
               {result.headers.map((h, i) => (
                 <HeaderResultCard key={h.key} header={h} index={i} />

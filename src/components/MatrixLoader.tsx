@@ -12,7 +12,7 @@ const MatrixLoader = () => {
     canvas.width = 300;
     canvas.height = 200;
 
-    const chars = "01アイウエオカキクケコHTTPSCSPHSTS";
+    const chars = "01HTTPSCSPHSTSCLOAKMFA";
     const fontSize = 12;
     const columns = Math.floor(canvas.width / fontSize);
     const drops = Array(columns).fill(1);
@@ -38,7 +38,7 @@ const MatrixLoader = () => {
   return (
     <div className="flex flex-col items-center gap-4">
       <canvas ref={canvasRef} className="rounded-xl opacity-60" />
-      <p className="text-sm text-muted-foreground animate-pulse font-mono">Analyse en cours…</p>
+      <p className="text-sm text-muted-foreground animate-pulse font-mono">Analyzing…</p>
     </div>
   );
 };

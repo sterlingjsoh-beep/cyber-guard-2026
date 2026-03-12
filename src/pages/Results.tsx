@@ -36,20 +36,20 @@ const Results = () => {
   }, [score]);
 
   const getMessage = () => {
-    if (score <= 4) return { icon: AlertTriangle, color: "text-destructive", title: "⚠️ Attention, danger !", desc: "Vous êtes très vulnérable aux arnaques. Relisez attentivement les explications et refaites le quiz." };
-    if (score <= 7) return { icon: Shield, color: "text-warning", title: "🟡 Pas mal, mais des failles persistent", desc: "Vous avez de bonnes bases mais certaines arnaques modernes peuvent encore vous piéger." };
-    return { icon: Star, color: "text-success", title: "🏆 Cyber-guerrier(ère) !", desc: "Impressionnant ! Vous pouvez aider vos proches à se protéger. Partagez vos connaissances !" };
+    if (score <= 4) return { icon: AlertTriangle, color: "text-destructive", title: "⚠️ Warning, danger!", desc: "You are very vulnerable to scams. Carefully re-read the explanations and retake the quiz." };
+    if (score <= 7) return { icon: Shield, color: "text-warning", title: "🟡 Not bad, but gaps remain", desc: "You have good basics but some modern scams can still trick you." };
+    return { icon: Star, color: "text-success", title: "🏆 Cyber warrior!", desc: "Impressive! You can help those around you stay safe. Share your knowledge!" };
   };
 
   const message = getMessage();
 
   const handleShare = () => {
-    const text = `🛡️ PhishQuiz 2026 — J'ai obtenu ${score}/10 (${percentage}%) au quiz anti-phishing ! Testez vos réflexes : ${window.location.origin}`;
+    const text = `🛡️ PhishQuiz 2026 — I scored ${score}/10 (${percentage}%) on the anti-phishing quiz! Test your reflexes: ${window.location.origin}`;
     if (navigator.share) {
       navigator.share({ title: "PhishQuiz", text });
     } else {
       navigator.clipboard.writeText(text);
-      alert("Lien copié dans le presse-papier !");
+      alert("Link copied to clipboard!");
     }
   };
 
@@ -92,16 +92,16 @@ const Results = () => {
         <div className="flex flex-col sm:flex-row gap-3 justify-center mb-12">
           <Link to="/quiz">
             <Button size="lg" className="gap-2 rounded-xl w-full sm:w-auto">
-              <RotateCcw className="h-4 w-4" /> Rejouer
+              <RotateCcw className="h-4 w-4" /> Play Again
             </Button>
           </Link>
           <Button variant="outline" size="lg" onClick={handleShare} className="gap-2 rounded-xl">
-            <Share2 className="h-4 w-4" /> Partager mon score
+            <Share2 className="h-4 w-4" /> Share My Score
           </Button>
         </div>
 
         {/* Answer review */}
-        <h2 className="text-xl font-bold mb-6">📋 Détail des réponses</h2>
+        <h2 className="text-xl font-bold mb-6">📋 Answer Details</h2>
         <div className="space-y-3">
           {allQuestions.map((q, i) => {
             const result = results[i];
