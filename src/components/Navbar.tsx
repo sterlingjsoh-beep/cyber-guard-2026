@@ -15,7 +15,10 @@ const Navbar = () => {
         </Link>
         <div className="flex items-center gap-3">
           <Link to="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-            Accueil
+            PhishQuiz
+          </Link>
+          <Link to="/home" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            HeaderCheck
           </Link>
           <Button variant="ghost" size="icon" onClick={toggle} className="rounded-full">
             {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
