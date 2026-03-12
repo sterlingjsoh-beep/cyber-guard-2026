@@ -7,6 +7,8 @@ import Navbar from "@/components/Navbar";
 import Index from "./pages/Index";
 import Quiz from "./pages/Quiz";
 import Results from "./pages/Results";
+import Home from "./pages/Home";
+import Analyze from "./pages/Analyze";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
