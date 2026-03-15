@@ -25,9 +25,12 @@ const Home = () => {
   const history = getHistory();
 
   const handleAnalyze = (targetUrl?: string) => {
-    const u = targetUrl || url;
-    if (!u.trim()) return;
-    navigate(`/analyze?url=${encodeURIComponent(u.trim())}`);
+    const u = (targetUrl || url).trim();
+    if (!u) return;
+    // Basic validation: must look like a domain or URL
+    const urlPattern = /^(https?:\/\/)?[\w.-]+\.[a-z]{2,}(\/.*)?$/i;
+    if (!urlPattern.test(u)) return;
+    navigate(`/analyze?url=${encodeURIComponent(u)}`);
   };
 
   return (
